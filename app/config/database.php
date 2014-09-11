@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'appdb',
+			'database'  => 'laravel_scotchio',
 			'username'  => 'root',
-			'password'  => 'password',
+			'password'  => 'mys092500',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

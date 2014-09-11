@@ -20,33 +20,31 @@
 	<!-- ANGULAR -->
 	<!-- all angular resources will be loaded from the /public folder -->
 		<script src="js/controllers/mainCtrl.js"></script> <!-- load our controller -->
-		<script src="js/controllers/pageCtrl.js"></script> <!-- load our controller -->
 		<script src="js/services/commentService.js"></script> <!-- load our service -->
-		<script src="js/services/pageService.js"></script> <!-- load our service -->
 		<script src="js/app.js"></script> <!-- load our application -->
 
 </head>
 <!-- declare our angular app and controller -->
-<body class="container" ng-app="commentApp" ng-controller="pageController">
+<body class="container" ng-app="commentApp" ng-controller="mainController">
 <div class="col-md-8 col-md-offset-2">
 
 	<!-- PAGE TITLE -->
 	<div class="page-header">
 		<h2>Laravel and Angular Single Page Application</h2>
-		<h4>Page System</h4>
+		<h4>Commenting System</h4>
 	</div>
 
 	<!-- NEW COMMENT FORM -->
-	<form ng-submit="submitPage()"> <!-- ng-submit will disable the default form action and use our function -->
+	<form ng-submit="submitComment()"> <!-- ng-submit will disable the default form action and use our function -->
 
 		<!-- AUTHOR -->
 		<div class="form-group">
-			<input type="text" class="form-control input-sm" name="author" ng-model="pageData.author" placeholder="Name">
+			<input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="Name">
 		</div>
 
 		<!-- COMMENT TEXT -->
 		<div class="form-group">
-			<input type="text" class="form-control input-lg" name="comment" ng-model="pageData.text" placeholder="Say what you have to say">
+			<input type="text" class="form-control input-lg" name="comment" ng-model="commentData.text" placeholder="Say what you have to say">
 		</div>
 		
 		<!-- SUBMIT BUTTON -->
@@ -56,7 +54,7 @@
 	</form>
 
 	<pre>
-	{{ pageData }}
+	{{ commentData }}
 	</pre>
 
 	<!-- LOADING ICON -->
@@ -65,25 +63,11 @@
 
 	<!-- THE COMMENTS -->
 	<!-- hide these comments if the loading variable is true -->
-	<div class="comment" ng-hide="loading" ng-repeat="page in pages">
-		<h3>Page #{{ page.id }} <small> Page Title: {{ page.title }}</h3>
-		<p>Parent Id: {{ page.parent_id }}</p>
-		<p>Page Path: {{ page.path }}</p>
-		
-		<ul>
-			<li ng-repeat="kid in page.kids">
-				{{kid.title}} : {{page.path}}/{{kid.path}} 
-				
-				<div ng-if="currentPage == kid.id">
-				    Current Page
-				</div> 
-				
-				<p><a href="#" ng-click="deletePage(kid.id)" class="text-muted">Delete</a></p>
-				
-			</li>
-		</ul>	
+	<div class="comment" ng-hide="loading" ng-repeat="comment in comments">
+		<h3>Comment #{{ comment.id }} <small>by {{ comment.author }}</h3>
+		<p>{{ comment.text }}</p>
 
-		
+		<p><a href="#" ng-click="deleteComment(comment.id)" class="text-muted">Delete</a></p>
 	</div>
 
 </div>
