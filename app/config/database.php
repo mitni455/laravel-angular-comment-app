@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => '{{database}}',
-			'username'  => '{{username}}',
-			'password'  => '{{password}}',
+			'database'  => 'laravel_scaffoldr_new_',
+			'username'  => 'root',
+			'password'  => 'mys092500',
 			/*'database'  => 'laravel_scaffoldr_new_sample',
 			'username'  => 'root',
 			'password'  => 'mys092500',*/

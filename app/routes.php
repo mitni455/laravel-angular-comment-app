@@ -13,7 +13,9 @@ Route::get('/', function()
 // ADMIN ===================================
 // =============================================
 Route::resource('admin/docs', 'UserStoryController');
-
+//Route::resource('page', 'CmsPageController');
+Route::get('page/{slug}', 'CmsPageController@showBySlug');
+Route::get('page/id/{slug}', 'CmsPageController@show');
 
 
 // =============================================
